@@ -1,5 +1,24 @@
-const { getElfsCalories, getMax, getMaxCalories } = require('./day-1');
+const {
+  getElfsCalories, getMax, getMaxCalories, getTopThree, getTopThreeCalories,
+} = require('./day-1');
 const data = require('./day-1.data');
+
+const exampleData = [
+  '1000',
+  '2000',
+  '3000',
+  '',
+  '4000',
+  '',
+  '5000',
+  '6000',
+  '',
+  '7000',
+  '8000',
+  '9000',
+  '',
+  '10000',
+];
 
 describe('day 1', () => {
   describe('part 1', () => {
@@ -27,27 +46,34 @@ describe('day 1', () => {
     });
     describe('getMaxCalories', () => {
       test('with example expects 24000', () => {
-        const exampleData = [
-          '1000',
-          '2000',
-          '3000',
-          '',
-          '4000',
-          '',
-          '5000',
-          '6000',
-          '',
-          '7000',
-          '8000',
-          '9000',
-          '',
-          '10000',
-        ];
         expect(getMaxCalories(exampleData)).toBe(24000);
       });
       test('with data', () => {
         const res = getMaxCalories(data);
         console.log(`Most calories: ${res}`);
+      });
+    });
+  });
+  describe('part 2', () => {
+    describe('getTopThreeSum', () => {
+      test('with 1000, 2000, 3000, 4000 expects 9000', () => {
+        expect(getTopThree([1000, 2000, 3000, 4000])).toBe(9000);
+      });
+      test('with 2000, 3000, 4000, 1000 expects 9000', () => {
+        expect(getTopThree([2000, 3000, 4000, 1000])).toBe(9000);
+      });
+      test('with 6000, 4000, 11000, 24000 expects 41000', () => {
+        expect(getTopThree([6000, 4000, 11000, 24000])).toBe(41000);
+      });
+      test('with 6000, 4000, 11000, 24000, 10000 expects 41000', () => {
+        expect(getTopThree([6000, 4000, 11000, 24000, 10000])).toBe(45000);
+      });
+      test('with example expects 45000', () => {
+        expect(getTopThreeCalories(exampleData)).toBe(45000);
+      });
+      test('with data', () => {
+        const res = getTopThreeCalories(data);
+        console.log(`Top three calories: ${res}`);
       });
     });
   });
