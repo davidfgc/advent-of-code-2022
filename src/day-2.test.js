@@ -1,4 +1,6 @@
-const { getRoundScore, getGameScore } = require('./day-2');
+const {
+  getRoundScore, getGameScore, getRoundScore2, getGameScore2,
+} = require('./day-2');
 const data = require('./day-2-data');
 
 describe('day 2', () => {
@@ -45,6 +47,42 @@ describe('day 2', () => {
       test('with data', () => {
         const gameScore = getGameScore(data);
         console.log(`Game Score: ${gameScore}`);
+      });
+    });
+  });
+  describe('part 2', () => {
+    describe('getRoundScore2', () => {
+      test('with A Y expects 4', () => {
+        const roundScore = getRoundScore2('A Y');
+
+        expect(roundScore).toBe(4);
+      });
+      test('with B X expects 1', () => {
+        const roundScore = getRoundScore2('B X');
+
+        expect(roundScore).toBe(1);
+      });
+      test('with C Z expects 7', () => {
+        const roundScore = getRoundScore2('C Z');
+
+        expect(roundScore).toBe(7);
+      });
+    });
+    describe('getGameScore2', () => {
+      test('with example input expects 12', () => {
+        const exampleInput = [
+          'A Y',
+          'B X',
+          'C Z',
+        ];
+
+        const gameScore = getGameScore2(exampleInput);
+
+        expect(gameScore).toBe(12);
+      });
+      test('with data', () => {
+        const gameScore = getGameScore2(data);
+        console.log(`Game Score 2: ${gameScore}`);
       });
     });
   });

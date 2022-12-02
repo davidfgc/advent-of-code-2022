@@ -4,6 +4,7 @@ const electionValues = {
   Z: 3,
 };
 
+// TODO does this make sense? should I create an alg?
 const electionsScores = {
   'A X': 3,
   'A Y': 6,
@@ -40,4 +41,30 @@ function getGameScore(roundsElections) {
   return score;
 }
 
-module.exports = { getRoundScore, getGameScore };
+const electionsScores2 = {
+  'A X': 3,
+  'A Y': 4,
+  'A Z': 8,
+  'B X': 1,
+  'B Y': 5,
+  'B Z': 9,
+  'C X': 2,
+  'C Y': 6,
+  'C Z': 7,
+};
+
+function getRoundScore2(args) {
+  return electionsScores2[args];
+}
+
+function getGameScore2(roundsElections) {
+  let score = 0;
+  roundsElections.forEach((roundElections) => {
+    score += getRoundScore2(roundElections);
+  });
+  return score;
+}
+
+module.exports = {
+  getRoundScore, getGameScore, getRoundScore2, getGameScore2,
+};
