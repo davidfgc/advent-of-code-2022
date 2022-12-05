@@ -1,4 +1,7 @@
-const { getItemType, getItemTypePriority, getPrioritiesSum } = require('./day-3');
+const {
+  getItemType, getItemTypePriority, getPrioritiesSum,
+  getGroupItemType, getGroupsItemTypes, getGroupsItemPrioritySum,
+} = require('./day-3');
 const data = require('./day-3-data');
 
 describe('day 3', () => {
@@ -68,6 +71,61 @@ describe('day 3', () => {
         const prioritiesSum = getPrioritiesSum(data);
 
         console.log(`Priorities sum: ${prioritiesSum}`);
+      });
+    });
+  });
+  describe('part 2', () => {
+    const exampleInput = [
+      'vJrwpWtwJgWrhcsFMMfFFhFp',
+      'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
+      'PmmdzqPrVvPwwTWBwg',
+      'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
+      'ttgJtRGJQctTZtZT',
+      'CrZsJsPPZsGzwwsLwLmpwMDw',
+    ];
+    describe('getGroupItemType', () => {
+      test('with example 1 expects r', () => {
+        const rucksacksGroup = [
+          'vJrwpWtwJgWrhcsFMMfFFhFp',
+          'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
+          'PmmdzqPrVvPwwTWBwg',
+        ];
+
+        const itemType = getGroupItemType(rucksacksGroup);
+
+        expect(itemType).toBe('r');
+      });
+      test('with example 2 expects Z', () => {
+        const rucksacksGroup = [
+          'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
+          'ttgJtRGJQctTZtZT',
+          'CrZsJsPPZsGzwwsLwLmpwMDw',
+        ];
+
+        const itemType = getGroupItemType(rucksacksGroup);
+
+        expect(itemType).toBe('Z');
+      });
+    });
+    describe('getGroupsItemTypes', () => {
+      test('with example input expects r,Z', () => {
+        const groupsItemTypes = getGroupsItemTypes(exampleInput);
+
+        expect(groupsItemTypes).toEqual(['r', 'Z']);
+      });
+    });
+    describe('getGroupsItemPrioritiesSum', () => {
+      test('with example input expects 70', () => {
+        const groupsItemTypes = ['r', 'Z'];
+
+        const groupsItemPrioritySum = getGroupsItemPrioritySum(groupsItemTypes);
+
+        expect(groupsItemPrioritySum).toBe(70);
+      });
+      test('with data', () => {
+        const groupsItemTypes = getGroupsItemTypes(data);
+        const groupsItemPrioritySum = getGroupsItemPrioritySum(groupsItemTypes);
+        console.log(groupsItemPrioritySum);
       });
     });
   });
