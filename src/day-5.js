@@ -23,7 +23,7 @@ function runMoveCommand(cratesMatrix, command) {
   const movingCratesCount = commandArr[1];
   const movedCrates = [];
   for (let movement = 0; movement < movingCratesCount; movement += 1) {
-    movedCrates.push(initialCratesStack.pop());
+    movedCrates.unshift(initialCratesStack.pop());
   }
   const newCratesMatrix = [...cratesMatrix];
   newCratesMatrix[initialPosition] = initialCratesStack;
@@ -63,7 +63,7 @@ function getTopCrates(stacks) {
 
 function getTopCratesFromData(data) {
   const stacks = readLines(data);
-  return getTopCrates(stacks);
+  return getTopCrates(stacks)
 }
 
 module.exports = {

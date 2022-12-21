@@ -92,7 +92,7 @@ describe('day 5', () => {
 
         const newCrates = runMoveCommand(cratesMatrix, 'move 2 from 1 to 2');
 
-        expect(newCrates[1]).toEqual(['B', 'C', 'A']);
+        expect(newCrates[1]).toEqual(['B', 'A', 'C']);
       });
     });
     describe('readLines', () => {
@@ -133,9 +133,9 @@ describe('day 5', () => {
 
         const newCrates = readLines(example);
 
-        expect(newCrates[0]).toEqual(['C']);
-        expect(newCrates[1]).toEqual(['M']);
-        expect(newCrates[2]).toEqual(['P', 'D', 'N', 'Z']);
+        expect(newCrates[0]).toEqual(['M']);
+        expect(newCrates[1]).toEqual(['C']);
+        expect(newCrates[2]).toEqual(['P', 'Z', 'N', 'D']);
       });
     });
     describe('getTopCrates', () => {
@@ -197,7 +197,7 @@ describe('day 5', () => {
 
         const topCrates = getTopCratesFromData(example);
 
-        expect(topCrates).toEqual(['C', 'M', 'Z', '', '', '', '', '', '']);
+        expect(topCrates).toEqual(['M', 'C', 'D', '', '', '', '', '', '']);
       });
       test('with data', () => {
         const topCrates = getTopCratesFromData(data);
